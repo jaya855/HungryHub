@@ -1,7 +1,7 @@
 const User=require("../models/User")
-
+const bcrypt=require('bcryptjs')
 const Login = async(req,res) => {
-    console.log("hello login backend")
+    console.log("hello login backend login")
   try{
      console.log("hello from backend login")
      
@@ -20,8 +20,8 @@ const Login = async(req,res) => {
             message:"user not found"
         })
      }
-
-     if(userfound.password !== password){
+     const isSame= await bcrypt.compare(password,userfound.password);
+     if(!isSame){
         return res.status(403).json({
             success:false,
             message:"password is wrong"

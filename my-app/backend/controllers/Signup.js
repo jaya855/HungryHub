@@ -1,5 +1,7 @@
 
 const User=require("../models/User")
+const bcrypt=require('bcryptjs')
+
 const Signup = async(req,res) => {
   try{
     const {name,email,address,password}=req.body;
@@ -20,9 +22,9 @@ const Signup = async(req,res) => {
         })
     }
     
-    
+    const hashedPass=await bcrypt.hash(password,10);
 
-       await  User.create({name,email,address,password});
+       await  User.create({name,email,address,password:hashedPass});
        console.log("hogya signup")
        return res.status(201).json({
             success: true,

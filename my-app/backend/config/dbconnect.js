@@ -2,12 +2,7 @@
  
  exports.dbconnect=async (req,res)=>{
     try{
-       await mongoose.connect(process.env.DBURL,
-            {
-                useNewUrlParser : true,
-                useUnifiedTopology : true,
-            }
-        )
+       await mongoose.connect(process.env.DBURL)
         console.log("db connected succesfully")
     }
     catch(error){
