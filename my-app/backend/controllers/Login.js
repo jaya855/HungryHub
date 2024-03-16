@@ -1,5 +1,8 @@
 const User=require("../models/User")
+const jwt = require('jsonwebtoken');
 const bcrypt=require('bcryptjs')
+const secret = process.env.tokenKey
+
 const Login = async(req,res) => {
     console.log("hello login backend login")
   try{
@@ -27,9 +30,13 @@ const Login = async(req,res) => {
             message:"password is wrong"
         })
      }
+     
+     const data = { id: userfound.id };
+     const token=jwt.sign(data,secret,{ expiresIn: '100h' })
      return res.status(201).json({
         success:true,
-        message:"successfully logged in"
+        message:"successfully logged in",
+        token:token
      })
   }
   catch(error){ 
