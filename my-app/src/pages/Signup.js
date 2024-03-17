@@ -21,7 +21,7 @@ const Signup = () => {
         console.log("Please fill out all fields");
         return;
       }
-      await axios.post("http://localhost:8080/api/v1/signup",formData);
+      await axios.post("http://localhost:8080/api/v1/auth/signup",formData);
       navigate("/login")
     }
     catch(error){

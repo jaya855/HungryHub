@@ -19,7 +19,7 @@ const Login = () => {
    console.log(formdata.password)
    
     try{
-    const ress=await axios.post("http://localhost:8080/api/v1/login",formdata)
+    const ress=await axios.post("http://localhost:8080/api/v1/auth/login",formdata)
 
       localStorage.setItem("authToken",ress.data.token)
      navigate("/")
