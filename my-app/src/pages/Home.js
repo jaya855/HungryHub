@@ -38,7 +38,7 @@ const Home = () => {
               return (
           
                 <div className='row pb-5'>
-                  <div key={data.id} className='fs-3 m-3'>
+                  <div key={data.id} className='fs-3 m-3 text-white'>
                     {data.CategoryName}
                   </div>
                   <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
