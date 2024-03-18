@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
-
+// import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 const Navbar = () => {
   let navigate = useNavigate();
   const handleLogout = () => {
@@ -10,7 +11,7 @@ const Navbar = () => {
 }
   return (
    
-    <nav className="navbar navbar-expand-lg bg-success navbar-dark position-fixed"  style={{ boxShadow: "0px 10px 20px black", filter: 'blur(20)', position: "fixed", zIndex: "10", width: "100%" }}>
+    <nav className="navbar navbar-expand-lg bg-success navbar-dark position-sticky"  style={{ boxShadow: "0px 10px 20px black", filter: 'blur(20)', position: "fixed", zIndex: "10", width: "100%" }}>
       
       <div className="container-fluid">
                     <Link className="navbar-brand fs-2 fst-italic" to="/">Hungryhub</Link>
@@ -29,17 +30,19 @@ const Navbar = () => {
                         </ul>
                         {(!localStorage.getItem("authToken")) ?
                             <form className="d-flex">
-                                <Link className="btn bg-white text-success mx-1 " to="/login">Login</Link>
-                                <Link className="btn bg-white text-success mx-1" to="/signup">Signup</Link>
+                                <Link className="btn bg-white text-success mx-1 fw-bold" to="/login">Login</Link>
+                                <Link className="btn bg-white text-success mx-1 fw-bold" to="/signup">Signup</Link>
                             </form> :
                             <div>
 
-                                <div className="btn bg-white text-success mx-2 ">
+                                  <div className="btn bg-white text-success mx-2 " >
+                                   
+                                        <AddShoppingCartIcon />
                                     
-                                  Cart
+                                       Cart
                                 </div>
 
-                                <button onClick={handleLogout} className="btn bg-white text-success" >Logout</button></div>}
+                                <button onClick={handleLogout} className="btn bg-white text-danger fw-bold" >Logout</button></div>}
                     </div>
                 </div>
     

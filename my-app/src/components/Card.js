@@ -1,7 +1,9 @@
 import React from 'react'
 
 const Card = ({foodName,item,options,ImgSrc}) => {
-
+  const handleAddToCart = ()=>{
+    console.log("added")
+  }
    
   let priceOptions = Object.keys(options);
     return (
@@ -12,7 +14,7 @@ const Card = ({foodName,item,options,ImgSrc}) => {
                 <div className="card-body">
                     <h5 className="card-title">{foodName}</h5>
                    
-                    <div className='container w-100'>
+                    <div className=' w-100'>
                         <select className="m-2 h-100  bg-success rounded">
                             {Array.from(Array(6), (e, i) => {
                                 return (
@@ -26,10 +28,14 @@ const Card = ({foodName,item,options,ImgSrc}) => {
                             })}
                         </select>
 
-                        <div className='d-inline h-100 fs-5'>
-                            Total Price
-                        </div>
+                        <div className=' d-inline ms-2 h-100 w-20 fs-5 ' >
+              finalPrice
+            </div>
+
+                        
                     </div>
+                    <hr></hr>
+          <button className={`btn btn-success justify-center ms-2  `} onClick={handleAddToCart}>Add to Cart</button>
                 </div>
             </div>
 
