@@ -1,6 +1,8 @@
 import React from 'react'
-
+import { useState } from 'react'
 export default function Carousel() {
+    const [search, setSearch] = useState('')
+   
     return (
         <div>
 
@@ -8,11 +10,10 @@ export default function Carousel() {
 
                 <div className="carousel-inner " id='carousel'>
                     <div class=" carousel-caption  " style={{ zIndex: "9" }}>
-                        <form className=" d-flex justify-content-center">  {/* justify-content-center, copy this <form> from navbar for search box */}
-                            <input className="form-control me-2 w-75 fw-bold text-dark bg-dark bg-gradient
-" type="search" placeholder="Search" aria-label="Search" />
-                            
-                        </form>
+                    <div className=" d-flex justify-content-center">  {/* justify-content-center, copy this <form> from navbar for search box */}
+                <input className="form-control me-2 w-75 fw-bold text-white fw-bold bg-dark bg-gradient" type="search" placeholder="Search in here..." aria-label="Search"  value={search} onChange={(e) => { setSearch(e.target.value) }} />
+                <button className="btn text-white bg-danger" onClick={() => { setSearch('') }}>X</button>
+              </div>
                     </div>
                     <div className="carousel-item active" >
                         <img src="https://source.unsplash.com/random/900x700/?burger" className="d-block w-100  " style={{ filter: "brightness(30%)" }} alt="..." />

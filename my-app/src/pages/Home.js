@@ -26,6 +26,9 @@ const Home = () => {
     loadFoodItems()
   }, [])
 
+
+   
+
   return (
     <div className=''>
       <div><Navbar /></div>
