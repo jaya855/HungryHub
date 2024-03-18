@@ -30,13 +30,14 @@ const Home = () => {
     <div className=''>
       <div><Navbar /></div>
       <div><Carousel /></div>
-      <div className='container box'>
+      <div className='boxx'>
+      <div className='container'>
         {
           foodCat.length !== 0
             ? foodCat.map((data) => {
               return (
           
-                <div className='row mb-3'>
+                <div className='row pb-5'>
                   <div key={data.id} className='fs-3 m-3'>
                     {data.CategoryName}
                   </div>
@@ -55,6 +56,7 @@ const Home = () => {
               )
             })
             : ""}
+      </div>
       </div>
       <div><Footer /></div>
     </div>
