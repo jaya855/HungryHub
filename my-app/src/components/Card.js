@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect} from 'react';
 import { useCart } from '../context/Cart';
 
 const Card = ({ foodName, item, options, ImgSrc }) => {
@@ -6,23 +6,21 @@ const Card = ({ foodName, item, options, ImgSrc }) => {
 
  
   const handleAddToCart = () => {
-    bucket.setCart({
+    const updatedCart = {
       ...bucket.cart,
-      [foodName]: { 
+      [foodName]: {
         fdName: foodName,
         qnty: quantity,
         opt: selectedOption,
         price: options[selectedOption] * quantity
-      } 
-    });
-    console.log(bucket.cart.length)
-    console.log(bucket.cart); 
+      }
+    };
+
+    bucket.setCart(updatedCart); 
+   
   };
   
 
-
-
-     
 
   const priceOptions = Object.keys(options);
   const [quantity, setQuantity] = useState(1);

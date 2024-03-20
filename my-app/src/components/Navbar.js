@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import CartModal from './CartModal';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useCart } from '../context/Cart';
 
 const Navbar = () => {
-
+  const navigate=useNavigate()
   const [showModal, setShowModal] = useState(false);
   const { cart } = useCart();
-  const navigate = useNavigate();
+  
   const cnt =Object.keys(cart).length
   const handleLogout = () => {
     localStorage.removeItem('authToken');
@@ -37,7 +37,7 @@ const Navbar = () => {
             </li>
             {(localStorage.getItem("authToken")) &&
               <li className="nav-item">
-                <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">My Orders</Link>
+                <Link className="nav-link fs-5 mx-3 active" aria-current="page"  to="/myOrder/:email">My Orders</Link>
               </li>}
           </ul>
           {(!localStorage.getItem("authToken")) ?

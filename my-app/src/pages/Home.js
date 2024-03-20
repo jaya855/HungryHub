@@ -46,7 +46,7 @@ const Home = () => {
                       return item.name.toLowerCase().includes(search.toLowerCase()) && item.CategoryName === data.CategoryName;
                     }
                   }).map((filterItems) => (
-                    <div key={filterItems.id} className='col-12 col-md-6 col-lg-3'>
+                    <div key={filterItems.id} className='col-12 col-sm-6 col-md-6 col-lg-3 card-container'>
                       <Card foodName={filterItems.name} item={filterItems} options={filterItems.options[0]} ImgSrc={filterItems.img} />
                     </div>
                   ))

@@ -1,5 +1,7 @@
 import React from 'react';
+import axios from 'axios'
 import { useCart } from '../context/Cart';
+
 
 const CartModal = ({ cartItems, onClose }) => {
   const { cart, setCart } = useCart();
@@ -11,6 +13,24 @@ const CartModal = ({ cartItems, onClose }) => {
     delete updatedCart[key];
     setCart(updatedCart);
   };
+
+  const handleCheckout=async()=>{
+    const currentUser=localStorage.getItem("email")
+    const currDate=Date.now()
+    const orderData={userEmail:currentUser,orderDate:currDate,userCart:cart}
+    
+    try{
+      await axios.post("http://localhost:8080/api/v1/checkout",orderData)
+      setCart({})
+  
+     
+      onClose()
+    }
+    catch(error){
+      console.log(error)
+       alert("not able to checkout")
+    }
+  }
 
   // Function to calculate total bill
   const calculateTotalBill = () => {
@@ -65,7 +85,7 @@ const CartModal = ({ cartItems, onClose }) => {
           </div>
           <div className="modal-footer" style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
             <p>Total Bill: ₹{calculateTotalBill()}</p>
-            <button className="btn btn-primary" >Checkout</button>
+            <button className="btn btn-primary" onClick={handleCheckout} >Checkout</button>
           </div>
         </div>
       </div>

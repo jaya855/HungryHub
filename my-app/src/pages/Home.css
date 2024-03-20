@@ -8,3 +8,8 @@
     background-color:#181616
    
 }
+.card-container {
+    display: flex;
+    justify-content: center;
+  }
+  

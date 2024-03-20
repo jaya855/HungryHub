@@ -5,7 +5,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 const Login = () => {
-  console.log("hello from frontend login")
+  // console.log("hello from frontend login")
   const [formdata,setFormData]=useState({email:"",password:""})
   const navigate=useNavigate()
   const handleChange=(e)=>{
@@ -15,14 +15,16 @@ const Login = () => {
   const submitHandler=async(e)=>{
    
     e.preventDefault();
-   console.log(formdata.email)
-   console.log(formdata.password)
+  //  console.log(formdata.email)
+  //  console.log(formdata.password)
    
     try{
-    const ress=await axios.post("http://localhost:8080/api/v1/auth/login",formdata)
-
-      localStorage.setItem("authToken",ress.data.token)
-     navigate("/")
+      const ress = await axios.post("http://localhost:8080/api/v1/auth/login", formdata);
+      // console.log("Response data from login:", ress.data); // Log response data to check if email is present
+  
+      localStorage.setItem("authToken", ress.data.token);
+      localStorage.setItem("email", ress.data.email);
+      navigate("/");
     }
     catch(error){
       console.log(error)
