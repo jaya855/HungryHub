@@ -6,6 +6,8 @@ import axios from 'axios'
 import { useNavigate  } from 'react-router-dom'
 
 const Signup = () => {
+  
+
   const navigate=useNavigate()
   const [formData,setFormData]=useState({name:"",email:"",address:"",password:""});
 
@@ -50,12 +52,10 @@ const Signup = () => {
             <div className="m-3">
               <label htmlFor="address" className="form-label" style={{"color":"white"}}>Address</label>
               <fieldset>
-                <input type="text" onChange={handleChange} className="form-control"  id="address" value={formData.address} name='address' placeholder='"Click below for fetching address"'  aria-describedby="emailHelp" />
+                <input type="text" onChange={handleChange} className="form-control"  id="address" value={formData.address} name='address'  aria-describedby="emailHelp" />
               </fieldset>
             </div>
-            <div className="m-3">
-              <button type="button"  name="geolocation" className=" btn btn-success">Click for current Location </button>
-            </div>
+           
             <div className="m-3">
               <label htmlFor="password" className="form-label" style={{"color":"white"}}>Password</label>
               <input type="password" className="form-control" id="password" name='password'value={formData.password}  onChange={handleChange}/>
